@@ -11,3 +11,7 @@ localhost ansible_connection=local
 #
 # [dbservers]
 # 192.168.1.20 ansible_user=root ansible_ssh_private_key_file=/root/.ssh/id_rsa
+
+[all]
+192.168.7.100
+debian.local

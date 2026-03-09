@@ -16,8 +16,10 @@ logger = logging.getLogger(__name__)
 class AgentAnsible(BaseAgent):
     AGENT_TYPE = "ansible"
     DESCRIPTION = (
-        "Automatisation infrastructure via Ansible : "
-        "playbooks, commandes ad-hoc, gestion inventaire, galaxy, vault"
+        "Automatisation infrastructure multi-serveurs via Ansible : "
+        "exécuter des playbooks, lancer des commandes ad-hoc sur plusieurs machines, "
+        "gérer l'inventaire des hôtes, installer des rôles Galaxy, gérer les secrets Vault. "
+        "À utiliser pour automatiser des tâches sur un parc de serveurs distants."
     )
     DEFAULT_CONFIG_PATH = "/opt/agent_ansible/config/config.json"
 
