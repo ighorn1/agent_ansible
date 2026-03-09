@@ -1,0 +1,13 @@
+# Inventaire Ansible
+# Ajouter vos hôtes ici ou via : SKILL:inventory ARGS:add-host <ip> <groupe>
+
+[local]
+localhost ansible_connection=local
+
+# Exemple :
+# [webservers]
+# 192.168.1.10 ansible_user=root
+# 192.168.1.11 ansible_user=root
+#
+# [dbservers]
+# 192.168.1.20 ansible_user=root ansible_ssh_private_key_file=/root/.ssh/id_rsa

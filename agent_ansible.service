@@ -1,0 +1,18 @@
+[Unit]
+Description=Agent Ansible — Automatisation infrastructure
+After=network.target mosquitto.service
+Wants=mosquitto.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/agent_ansible
+ExecStart=/opt/agent_ansible/venv/bin/python /opt/agent_ansible/agent_ansible.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agent-ansible
+
+[Install]
+WantedBy=multi-user.target

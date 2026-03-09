@@ -1,0 +1,3 @@
+agents_core @ file:///opt/agents_core
+ansible>=8.0
+requests>=2.28
