@@ -28,16 +28,22 @@ systemctl enable --now agent_ansible
 | `galaxy` | Installation de rôles et collections (`ansible-galaxy`) |
 | `vault` | Chiffrement/déchiffrement de secrets (`ansible-vault`) |
 | `shell` | Commandes shell locales (utile pour diagnostics) |
+| `script` | Bibliothèque de scripts bash (save/list/show/exec/run/delete) |
 | `agents_status` | Statut des agents du système |
 | `mqtt_send` | Publication sur un topic MQTT |
 | `mqtt_subscribe` | Souscription dynamique à un topic MQTT |
 | `muc_send` | Message dans le groupe XMPP |
 
+## Bibliothèque de scripts
+
+Les scripts bash sont stockés dans `/opt/agent_ansible/scripts/`. Ils peuvent encapsuler des appels `ansible-playbook` ou des opérations de maintenance sur l'infra.
+
 ## Structure
 
 ```
 agent_ansible.py      — Point d'entrée
-skills/               — 10 skills Ansible
+skills/               — 11 skills Ansible
+scripts/              — Scripts bash persistants
 config/               — Configuration et system prompt
 playbooks/            — Playbooks Ansible
 inventory/
@@ -61,13 +67,15 @@ agent_ansible.service — Unit systemd
   "mqtt": { "host": "localhost", "port": 1883 },
   "llm": {
     "base_url": "http://192.168.7.119:11434",
-    "model": "ministral-3:latest",
+    "model": "qwen3:8b",
     "temperature": 0.3
   },
   "llm_profiles": {
-    "local": "ministral-3:latest",
+    "local": "qwen3:8b",
     "cloud": "gpt-oss:120b-cloud"
-  }
+  },
+  "use_omemo": true,
+  "use_llm_coordinator": true
 }
 ```
 
@@ -77,6 +85,7 @@ agent_ansible.service — Unit systemd
 /report   — Rapport (stats tâches + version Ansible)
 /update   — Git pull + redémarrage du service
 /status   — État de la queue de tâches
+/script   — Gestion de la bibliothèque de scripts bash
 ```
 
 ## Exemples de tâches (via Nexus)
@@ -86,4 +95,5 @@ agent_ansible.service — Unit systemd
 "Fais un apt upgrade sur tous les serveurs de prod"
 "Ping tous les hôtes de l'inventaire"
 "Installe le rôle geerlingguy.nginx depuis Galaxy"
+"Planifie le playbook backup.yml tous les soirs à 02:00"
 ```
