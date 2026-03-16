@@ -28,7 +28,7 @@ systemctl enable --now agent_ansible
 | `galaxy` | Installation de rôles et collections (`ansible-galaxy`) |
 | `vault` | Chiffrement/déchiffrement de secrets (`ansible-vault`) |
 | `shell` | Commandes shell locales (utile pour diagnostics) |
-| `script` | Bibliothèque de scripts bash (save/list/show/exec/run/delete) |
+| `script` | Bibliothèque de scripts bash (save/list/show/edit/exec/run/delete) |
 | `agents_status` | Statut des agents du système |
 | `mqtt_send` | Publication sur un topic MQTT |
 | `mqtt_subscribe` | Souscription dynamique à un topic MQTT |
@@ -37,6 +37,8 @@ systemctl enable --now agent_ansible
 ## Bibliothèque de scripts
 
 Les scripts bash sont stockés dans `/opt/agent_ansible/scripts/`. Ils peuvent encapsuler des appels `ansible-playbook` ou des opérations de maintenance sur l'infra.
+
+Les noms sont normalisés automatiquement (extensions strip, extensions système interdites). Le contenu doit contenir au moins une commande réelle.
 
 ## Structure
 

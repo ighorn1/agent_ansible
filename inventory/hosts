@@ -15,3 +15,33 @@ localhost ansible_connection=local
 [all]
 192.168.7.100
 debian.local
+
+[net7]
+192.168.7.79 ansible_user=admin ansible_ssh_private_key_file=/root/.ssh/id_rsa
+192.168.7.80 ansible_user=admin ansible_ssh_private_key_file=/root/.ssh/id_rsa
+192.168.7.90 ansible_user=admin ansible_ssh_private_key_file=/root/.ssh/id_rsa
+192.168.7.91 ansible_user=admin ansible_ssh_private_key_file=/root/.ssh/id_rsa
+192.168.7.112 ansible_user=admin ansible_ssh_private_key_file=/root/.ssh/id_rsa
+192.168.7.119 ansible_user=admin ansible_ssh_private_key_file=/root/.ssh/id_rsa
+192.168.7.120 ansible_user=admin ansible_ssh_private_key_file=/root/.ssh/id_rsa
+192.168.7.120
+192.168.7.119
+192.168.7.112
+192.168.7.91
+192.168.7.90
+192.168.7.80
+192.168.7.79
+192.168.7.76
+192.168.7.75
+192.168.7.74
+192.168.7.73
+192.168.7.72
+192.168.7.55
+192.168.7.54
+192.168.7.53
+192.168.7.52
+192.168.7.51
+192.168.7.19
+192.168.7.15
+
+[network]
